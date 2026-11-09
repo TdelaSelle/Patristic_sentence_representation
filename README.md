@@ -1,4 +1,4 @@
-# PatriSE
+# Unsupervised Learning of Patristic Sentence Representations for Text Reuse Detection 
 
 Code and data accompanying:
 
@@ -86,3 +86,7 @@ Install versions appropriate for the available hardware and CUDA runtime.
 Some preprocessing paths and model configurations are intentionally project-
 specific. Review the constants at the top of `prepare_corpus.py` and the
 configuration cells in the notebook before running the full pipeline.
+
+## License
+
+This repository is released under the [MIT License](./LICENSE).
