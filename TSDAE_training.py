@@ -470,9 +470,9 @@ def train_tsdae(args: argparse.Namespace) -> None:
 
 
 def train_tsdae_adaptation(
-    base_model_name: str = "models/PatriBERT-lat-II_e8_lr5e-05_bs16_acc8",
-    corpus_path: str = "preprocessed_corpus/SC_corpus.txt",
-    output_path: str = "models/PatriBERT-tsdae",
+    base_model_name: str = "",
+    corpus_path: str = "",
+    output_path: str = "",
     device: str = "cuda",
     max_sentences: Optional[int] = None,
 ) -> None:
@@ -500,7 +500,7 @@ def train_tsdae_adaptation(
         prefetch_factor=None,
         persistent_workers=None,
         use_amp=None,
-        tie_encoder_decoder=True,
+        tie_encoder_decoder=False,
     )
     train_tsdae(args)
 
@@ -513,19 +513,19 @@ if __name__ == "__main__":
     parser.add_argument(
         "--base-model",
         type=str,
-        default="models/PatriBERT-lat-II_e8_lr5e-05_bs16_acc8",
+        default="",
         help="Path or HF id of pretrained model",
     )
     parser.add_argument(
         "--corpus-path",
         type=str,
-        default="preprocessed_corpus/SC_corpus.txt",
+        default="",
         help="Path to TXT corpus (one sentence per line)",
     )
     parser.add_argument(
         "--output-path",
         type=str,
-        default="models/PatriBERT-tsdae",
+        default="",
         help="Directory to save trained model",
     )
 
@@ -588,7 +588,11 @@ if __name__ == "__main__":
     parser.add_argument(
         "--tie-encoder-decoder",
         action=argparse.BooleanOptionalAction,
-        default=True,
+        default=False,
+        help=(
+            "Tie encoder and decoder weights. Unsupported by transformers >= 5.0; "
+            "defaults to untied weights."
+        ),
     )
 
     args = parser.parse_args()

@@ -1,0 +1,11 @@
+torch
+sentence-transformers
+jupyter
+numpy
+pandas
+scikit-learn
+matplotlib
+faiss-cpu
+tqdm
+transformers
+huggingface-hub

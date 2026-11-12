@@ -31,17 +31,8 @@ TSDAE (denoising autoencoding) and SimCSE-style contrastive training.
 
 ### Data
 
-- `data/bibles/VG.tsv`: Vulgate reference corpus.
-- `data/bibles/LXX+NTG.tsv`: Greek Septuagint and New Testament reference
-  corpus.
-- `data/reuses_test_set/`: TSV files for Augustine, Jerome, and Athanasius.
-  Each file contains `sentence_index`, `text`, `label`, and `reference`.
-- `data/training_corpus/`: one-sentence-per-line corpora used for unsupervised
-  training.
+Data availability: restricted access. Most of the patristic data underlying this study are proprietary to Brepols Publishers (Library of Latin Texts / BREPOLiS) and were used under licence; they therefore cannot be shared publicly. Equivalent access may be obtained through a Brepols subscription. The biblical reference data used in this study come from the BiblIndex platform ( https://www.biblindex.org/en/bible-parser); although accessible via the BiblIndex interface and API, they are not freely redistributable under the platform's terms of use. Only the open-access data derived from Augustine of Hippo's Contra Faustum (public-domain text) are deposited in this Zenodo repository. 
 
-The notebook can select a Bible corpus and a patristic test set, encode the
-texts with several models, and write metrics, LaTeX tables, cached embeddings,
-ROC/PR curves, and false-positive analyses under `results/`.
 
 ## Workflow
 
@@ -63,12 +54,12 @@ directory.
 ```bash
 python TSDAE_training.py \
   --base-model path/to/pretrained-model \
-  --corpus-path data/training_corpus/Patristic_latin_sentences.txt \
+  --corpus-path data/training_corpus/ \
   --output-path models/tsdae
 
 python simCSE_training.py \
   --base-model path/to/pretrained-model \
-  --corpus-path data/training_corpus/Patristic_latin_sentences.txt \
+  --corpus-path data/training_corpus/ \
   --output-path models/simcse
 ```
 
@@ -89,4 +80,4 @@ configuration cells in the notebook before running the full pipeline.
 
 ## License
 
-This repository is released under the [MIT License](./LICENSE).
+The code in this repository is released under the [MIT License](./LICENSE).
